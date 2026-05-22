@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:app_pokemon/models/pokemon.dart';
 import 'package:app_pokemon/services/api_service.dart';
 import 'package:app_pokemon/services/storage_service.dart';
-import 'package:app_pokemon/components/pokemon_card.dart'; // Import do componente isolado
-import 'package:app_pokemon/screens/favorites_screen.dart'; // Import da tela de favoritos
+import 'package:app_pokemon/components/pokemon_card.dart';
+import 'package:app_pokemon/screens/favorites_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -195,7 +195,6 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          // CRITÉRIO CRÍTICO: Botão adicionado para acessar a Tela de Favoritos
           IconButton(
             icon: const Icon(Icons.favorite, color: Colors.redAccent),
             onPressed: () {
@@ -212,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     getPokemonSubtype: _getPokemonSubtype,
                   ),
                 ),
-              ).then((_) => setState(() {})); // Sincroniza o estado ao retornar
+              ).then((_) => setState(() {}));
             },
           ),
           IconButton(
@@ -242,7 +241,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 final isFavorite = _favoriteNames.contains(pokemon.name);
                 final pokemonId = _getPokemonId(pokemon.url);
 
-                // CRITÉRIO CRÍTICO: Utilizando a otimização através da Componentização (PokemonCard)
                 return PokemonCard(
                   pokemon: pokemon,
                   isFavorite: isFavorite,
