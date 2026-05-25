@@ -10,6 +10,8 @@ class PokemonCard extends StatelessWidget {
   final Color cardColor;
   final String typeText;
   final VoidCallback onFavoriteToggle;
+  final bool isSelected;
+  final VoidCallback onSelectToggle;
 
   const PokemonCard({
     super.key,
@@ -20,6 +22,8 @@ class PokemonCard extends StatelessWidget {
     required this.cardColor,
     required this.typeText,
     required this.onFavoriteToggle,
+    required this.isSelected,
+    required this.onSelectToggle,
   });
 
   @override
@@ -37,6 +41,8 @@ class PokemonCard extends StatelessWidget {
               imageUrl: imageUrl,
               themeColor: cardColor,
               type: typeText,
+              isSelected: isSelected,
+              onSelectToggle: onSelectToggle,
             ),
           ),
         );
@@ -53,7 +59,7 @@ class PokemonCard extends StatelessWidget {
                 child: Text(
                   formattedId,
                   style: TextStyle(
-                    color: Colors.black.withOpacity(0.12),
+                    color: Colors.black.withValues(alpha: 0.12),
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
@@ -81,7 +87,7 @@ class PokemonCard extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.25),
+                        color: Colors.white.withValues(alpha: 0.25),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -133,4 +139,4 @@ class PokemonCard extends StatelessWidget {
       ),
     );
   }
-}S
+}
